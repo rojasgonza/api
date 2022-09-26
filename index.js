@@ -18,11 +18,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 // importar cors permite que un cliente se conecte a otro servidor
 //definir dominios para recibir peticiones
-const whitelist = [process.env.FRONTEND_URL]
+const whitelist = [process.env.FRONTEND_URL];
 const corsOptions = {
     origin: (origin, callback) => {
         console.log(origin)
-        const existe = whitelist.some(dominio => dominio === origin);
+        const existe = whitelist.some( dominio => dominio === origin);
         if(existe){
             callback(null, true)
         }else{
