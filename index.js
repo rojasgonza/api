@@ -16,7 +16,6 @@ const app = express();
 // habilitar bodyparser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(cors(corsOptions));
 // importar cors permite que un cliente se conecte a otro servidor
 //definir dominios para recibir peticiones
 const whitelist = [process.env.FRONTEND_URL]
@@ -31,6 +30,8 @@ const corsOptions = {
         }
     }
 }
+app.use(cors(corsOptions));
+
 //habilitar cors
 
 // Rutas de la app
