@@ -16,12 +16,13 @@ const app = express();
 // habilitar bodyparser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
+app.use(cors(corsOptions));
 // importar cors permite que un cliente se conecte a otro servidor
 //definir dominios para recibir peticiones
 const whitelist = [process.env.FRONTEND_URL]
 const corsOptions = {
     origin: (origin, callback) => {
+        console.log(origin)
         const existe = whitelist.some(dominio => dominio === origin);
         if(existe){
             callback(null, true)
@@ -31,7 +32,6 @@ const corsOptions = {
     }
 }
 //habilitar cors
-app.use(cors(corsOptions));
 
 // Rutas de la app
 app.use('/', routes());
@@ -40,7 +40,7 @@ app.use('/', routes());
 
 // puerto
 const host = process.env.HOST || '0.0.0.0';
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, host, ()=>{
     console.log('el servidor esta funcionando');
 });

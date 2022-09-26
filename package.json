@@ -4,8 +4,9 @@
   "description": "Primera app solo",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js",
-    "desarrollo": "nodemon ./index.js"
+    "desarrollo": "nodemon ./index.js",
+    "start": "node ./index.js"
+
   },
   "author": "Gonzalo Rojas",
   "license": "ISC",
