@@ -19,18 +19,25 @@ app.use(bodyParser.urlencoded({extended: true}));
 // importar cors permite que un cliente se conecte a otro servidor
 //definir dominios para recibir peticiones
 const whitelist = [process.env.FRONTEND_URL]
-const corsOptions = {
-    origin: (origin, callback) => {
-        console.log(origin)
-        const existe = whitelist.some(dominio => dominio === origin);
-        if(existe){
-            callback(null, true)
-        }else{
-            callback(new Error('No permitido por cors'))
-        }
-    }
+// const corsOptions = {
+//     origin: (origin, callback) => {
+//         console.log(origin)
+//         const existe = whitelist.some(dominio => dominio === origin);
+//         if(existe){
+//             callback(null, true)
+//         }else{
+//             callback(new Error('No permitido por cors'))
+//         }
+//     }
+// }
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'https://peppy-kitsune-9ae583.netlify.app/');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
 }
-app.use(cors(corsOptions));
+app.use(cors(allowCrossDomain));
 
 //habilitar cors
 
