@@ -6,7 +6,7 @@ const cors = require('cors')
 require('dotenv').config({path: 'variables.env'})
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb+srv://root:root123@cluster0.x6e92x0.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true
 });
  
@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 // importar cors permite que un cliente se conecte a otro servidor
 //definir dominios para recibir peticiones
-const whitelist = ['https://peppy-kitsune-9ae583.netlify.app/'];
+const whitelist = [process.env.FRONTEND_URL];
 const corsOptions = {
     origin: (origin, callback) => {
         console.log(origin)
