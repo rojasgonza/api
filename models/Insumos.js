@@ -8,6 +8,10 @@ const insumosSchema = new Schema({
   },
     nombre: {
       type: String
-  }
+  },
+    camara: {
+      type: String
+    }
+
 })
 module.exports = mongoose.model('Insumos', insumosSchema);
