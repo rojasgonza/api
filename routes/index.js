@@ -29,7 +29,7 @@ router.get('/insumos/:idInsumo', insumosController.mostrarInsumo);
 router.put('/insumos/:idInsumo', insumosController.actualizarInsumo);
 // Borrar insumo
 router.delete('/insumos/:idInsumo', insumosController.borrarInsumo);
-
+router.delete('/pedidos-borrar', pedidoController.eliminarTodo);
 // EMPLEADOS //
 // Nuevo Empleado
 router.post('/empleados', empleadosController.nuevoEmpleado);
